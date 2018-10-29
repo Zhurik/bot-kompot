@@ -2,6 +2,8 @@
 import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 
+def send_msg(id, text, session):
+    session.messages.send(user_id=id, message=text)
 
 def main():
     with open('token.txt', 'r') as f:
@@ -13,7 +15,9 @@ def main():
     print('Слушаем')
     for event in longpoll.listen():
 
-        print(event.type)
+        if event.type == VkBotEventType.MESSAGE_NEW:
+            print(event.obj.text)
+            send_msg(event.from_id, event.obj.text, vk_session)
 
 
 if __name__ == '__main__':
