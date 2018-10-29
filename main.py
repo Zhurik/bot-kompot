@@ -4,14 +4,13 @@ from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 
 
 def main():
-    """ Пример использования bots longpoll
-        https://vk.com/dev/bots_longpoll
-    """
+    with open('token.txt', 'r') as f:
+        api_token = f.read()
 
-    vk_session = vk_api.VkApi(token='')
+    vk_session = vk_api.VkApi(token=api_token)
 
     longpoll = VkBotLongPoll(vk_session, '173227835')
-
+    print('Слушаем')
     for event in longpoll.listen():
 
         if event.type == VkBotEventType.MESSAGE_NEW:
