@@ -5,7 +5,7 @@ from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 
 def main():
     with open('token.txt', 'r') as f:
-        api_token = f.read()
+        api_token = f.read().strip()
 
     vk_session = vk_api.VkApi(token=api_token)
 
