@@ -2,6 +2,8 @@
 import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from image_reworker import rework_picture_from_url
+from rework_functions import detect
+
 
 def send_msg(id, text, session):
     if text == '':
@@ -22,7 +24,7 @@ def main():
             print(event)
             for attachment in event.obj.attachments:
                 if attachment['type'] == 'photo':
-                     rework_picture_from_url(vk_session, attachment['photo']['sizes'][3]['url'], event.obj.from_id)
+                     rework_picture_from_url(vk_session, attachment['photo']['sizes'][3]['url'], event.obj.from_id, detect)
             send_msg(event.obj.from_id, event.obj.text, api)
 
 

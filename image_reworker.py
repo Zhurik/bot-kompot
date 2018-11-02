@@ -7,7 +7,7 @@ pic_url = 'https://memepedia.ru/wp-content/uploads/2017/05/dick-butt-%D0%BE%D1%8
 user_id = 18841900
 
 # def rework_picture_from_url(session, url, user, text, rework_function):
-def rework_picture_from_url(session, url, user, text=''):
+def rework_picture_from_url(session, url, user, rework_function, text=''):
     # Получаем имя картинки
     name = url.rsplit('/', 1)[1]
 
@@ -17,7 +17,7 @@ def rework_picture_from_url(session, url, user, text=''):
         f.write(r.content)
     
     # Тут ее можно вполне себе обработать
-    # rework_function(name)
+    rework_function(name)
 
     upload = vk_api.VkUpload(session)
     photo = upload.photo_messages(name)

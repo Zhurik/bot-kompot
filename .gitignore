@@ -105,3 +105,6 @@ venv.bak/
 
 # token file
 token.txt
+
+# save files
+.save
